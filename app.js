@@ -7,5 +7,6 @@ var mouseDragged = function() {
 };
 
 var windowResized = function() {
-    resizeCanvas(windowWidth, windowHeight);
+    // change to true when drawing is saved to array
+    resizeCanvas(windowWidth, windowHeight, false);
 };
