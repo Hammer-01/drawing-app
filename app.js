@@ -1,18 +1,13 @@
-var cnv; // canvas
 var eraser = false;
 var strokeColour;
 
 var setup = function() {
-    cnv = createCanvas(windowWidth, windowHeight);
-    cnv.addEventListener('pointerdown', (event) => {
-        eraser = event.pointerType === 'pen' && event.button === 5;
-    }, false);
-    
+    createCanvas(windowWidth, windowHeight);
     strokeColour = color(255);
 };
 
-var mouseDragged = function() {
-    if (eraser) {
+var mouseDragged = function(event) {
+    if (event.button === 5) { // pen eraser
         noStroke();
         fill(255);
         circle(mouseX, mouseY, 5);
