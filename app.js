@@ -1,4 +1,3 @@
-var eraser = false;
 var strokeColour;
 
 var setup = function() {
