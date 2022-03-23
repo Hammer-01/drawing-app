@@ -3,7 +3,7 @@ var setup = function() {
 };
 
 var mouseDragged = function() {
-    line(pmouseX, pmouseY, mouseX, mouseY);
+    line(mouseX, mouseY, pmouseX, pmouseY);
 };
 
 var windowResized = function() {
