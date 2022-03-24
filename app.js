@@ -1,14 +1,17 @@
 var strokeColour;
+var eraser = false;
 
 var setup = function() {
     createCanvas(windowWidth, windowHeight);
     strokeColour = color(255);
 };
 
-var mouseDragged = function(event) {
-    console.log(event);
-    console.log(event.button);
-    if (event.button === 5) { // pen eraser
+var mousePressed = function(event) {
+    eraser = event.button === 5;
+};
+
+var mouseDragged = function() {
+    if (eraser) {
         noStroke();
         fill(255);
         circle(mouseX, mouseY, 5);
