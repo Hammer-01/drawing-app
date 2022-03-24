@@ -6,6 +6,8 @@ var setup = function() {
 };
 
 var mouseDragged = function(event) {
+    console.log(event);
+    console.log(event.button);
     if (event.button === 5) { // pen eraser
         noStroke();
         fill(255);
