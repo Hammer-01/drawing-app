@@ -1,3 +1,14 @@
+// TODO: manually add event using addEventListener
+/*
+    document.body.addEventListener('pointerdown', function(event) {
+        if (event.pointerType === 'pen') {
+            console.log(event.button?'eraser':'pen');
+        } else {
+            console.log(event.button);
+        }
+    }, false);
+*/
+
 var strokeColour;
 var eraser = false;
 
