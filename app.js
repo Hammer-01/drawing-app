@@ -1,6 +1,6 @@
 // TODO: manually add event using addEventListener
 /*
-    document.body.addEventListener('pointerdown', function(event) {
+    cnv.elt.addEventListener('pointerdown', function(event) {
         if (event.pointerType === 'pen') {
             console.log(event.button?'eraser':'pen');
         } else {
