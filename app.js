@@ -24,16 +24,18 @@ var setup = function() {
         console.log('Eraser after: ' + eraser);
     }, true);
     
-    strokeColour = color(255);
+    strokeColour = color(0);
 };
 
 var mouseDragged = function() {
-    console.log('Eraser in mouseDragged' + eraser);
+    console.log('Eraser in mouseDragged: ' + eraser);
     if (eraser) {
+        console.log('Erasing...');
         noStroke();
         fill(255);
         circle(mouseX, mouseY, 5);
     } else {
+        console.log('Drawing...);
         stroke(strokeColour);
         line(mouseX, mouseY, pmouseX, pmouseY);
     }
