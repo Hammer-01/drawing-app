@@ -5,6 +5,7 @@
 var cnv;
 
 var points = [];
+var ePoints = []; // temporary
 
 var strokeColour;
 var eraser = false;
@@ -25,6 +26,11 @@ var draw = function() {
     for (let p = 0; p < points.length-1; p++) {
         if (points[p]) line(points[p][0], points[p][1], points[p+1][0], points[p+1][1]);
     }
+    noStroke();
+    fill(255);
+    for (let p = 0; p < ePoints.length; p++) {
+        if (ePoints[p]) circle(ePoints[p][0], ePoints[p][1], eraserSize);
+    }
 };
 
 var mousePressed = function() {
@@ -33,9 +39,10 @@ var mousePressed = function() {
 
 var mouseDragged = function() {
     if (eraser) {
-        noStroke();
-        fill(255);
-        circle(mouseX, mouseY, eraserSize);
+        //noStroke();
+        //fill(255);
+        //circle(mouseX, mouseY, eraserSize);
+        ePoints.push([mouseX, mouseY]);
     } else {
         points.push([mouseX, mouseY]);
     }
