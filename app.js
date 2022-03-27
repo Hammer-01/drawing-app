@@ -1,3 +1,7 @@
+// TODO: 
+//   Save to localStorage
+//   Fix eraser/add new eraser functionality
+
 var cnv;
 
 var points = [];
