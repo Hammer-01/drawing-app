@@ -1,30 +1,24 @@
 var strokeColour;
 var eraser = false;
+var eraserSize = 20;
 var cnv;
 
 var setup = function() {
     cnv = createCanvas(windowWidth, windowHeight);
     console.log('Canvas id: ' + cnv.id());
     cnv.elt.addEventListener('pointerdown', function(event) {
-        console.log('pointerType: ' + event.pointerType);
-        console.log('Button: ' + event.button);
-        console.log('Eraser before: ' + eraser);
         eraser = event.button === 5;
-        console.log('Eraser after: ' + eraser);
     }, true);
     
     strokeColour = color(0);
 };
 
 var mouseDragged = function() {
-    console.log('Eraser in mouseDragged: ' + eraser);
     if (eraser) {
-        console.log('Erasing...');
         noStroke();
         fill(255);
-        circle(mouseX, mouseY, 5);
+        circle(mouseX, mouseY, eraserSize);
     } else {
-        console.log('Drawing...');
         stroke(strokeColour);
         line(mouseX, mouseY, pmouseX, pmouseY);
     }
