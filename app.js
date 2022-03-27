@@ -12,8 +12,6 @@ var setup = function() {
         eraser = event.button === 5;
     }, true);
     
-    frameRate(Infinity); // max frame rate
-    
     strokeColour = color(0);
 };
 
