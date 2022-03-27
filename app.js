@@ -1,14 +1,3 @@
-// TODO: manually add event using addEventListener
-/*
-    cnv.elt.addEventListener('pointerdown', function(event) {
-        if (event.pointerType === 'pen') {
-            console.log(event.button?'eraser':'pen');
-        } else {
-            console.log(event.button);
-        }
-    }, false);
-*/
-
 var strokeColour;
 var eraser = false;
 var cnv;
@@ -35,7 +24,7 @@ var mouseDragged = function() {
         fill(255);
         circle(mouseX, mouseY, 5);
     } else {
-        console.log('Drawing...);
+        console.log('Drawing...');
         stroke(strokeColour);
         line(mouseX, mouseY, pmouseX, pmouseY);
     }
