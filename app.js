@@ -11,9 +11,11 @@
 
 var strokeColour;
 var eraser = false;
+var cnv;
 
 var setup = function() {
-    createCanvas(windowWidth, windowHeight);
+    cnv = createCanvas(windowWidth, windowHeight);
+    console.log('Canvas id: ' + cnv.id());
     strokeColour = color(255);
 };
 
