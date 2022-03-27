@@ -19,6 +19,7 @@ var setup = function() {
 
 var mousePressed = function(event) {
     console.log(event);
+    console.log(event.pointerType);
     console.log(event.button);
     console.log(event.buttons);
     eraser = event.button === 5;
