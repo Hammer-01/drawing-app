@@ -12,7 +12,7 @@ var setup = function() {
         eraser = event.button === 5;
     }, true);
     
-    frameRate(0); // max frame rate
+    //frameRate(0); // max frame rate
     
     strokeColour = color(0);
 };
