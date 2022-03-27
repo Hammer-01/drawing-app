@@ -1,14 +1,11 @@
 body {
   margin: 0;
   padding: 0;
+  
+  /* Fix back/forward navigation issues when drawing (https://stackoverflow.com/questions/17474930/disable-chrome-two-fingers-back-forward-swipe#50846937) */
   overscroll-behavior-x: none;
 }
 
 canvas {
   display: block;
 }
-
-/* Fix back/forward navigation issues when drawing (https://stackoverflow.com/questions/17474930/disable-chrome-two-fingers-back-forward-swipe#50846937) */
-/*body {
-  overscroll-behavior-x: none;
-}*/
