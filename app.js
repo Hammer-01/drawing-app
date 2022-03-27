@@ -18,10 +18,11 @@ var setup = function() {
 };
 
 var draw = function() {
+    console.log('in draw');
     background(255);
     stroke(strokeColour); // move inside loop later when diff colours available
     for (let p = 0; p < points.length-1; p++) {
-        console.log('in loop')
+        console.log('in loop');
         if (points[p]) {
             line(points[p][0], points[p][1], points[p+1][0], points[p+1][1]);
             console.log(`Drawing line from (${points[p][0]}, ${points[p][1]}) to (${points[p+1][0]}, ${points[p+1][1]})`);
