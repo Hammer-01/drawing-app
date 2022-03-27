@@ -1,16 +1,32 @@
+var cnv;
+
+var points = [];
+
 var strokeColour;
 var eraser = false;
-var eraserSize = 20;
-var cnv;
+var eraserSize = 50;
 
 var setup = function() {
     cnv = createCanvas(windowWidth, windowHeight);
-    console.log('Canvas id: ' + cnv.id());
     cnv.elt.addEventListener('pointerdown', function(event) {
         eraser = event.button === 5;
     }, true);
     
+    frameRate(0); // max frame rate
+    
     strokeColour = color(0);
+};
+
+var draw = function() {
+    background(255);
+    stroke(strokeColour); // move inside loop later when diff colours available
+    for (let p = 0; p < points.length-1; p++) {
+        if (p) line(points[p][0], points[p][1], points[p+1][0], points[p+1][1]);
+    }
+};
+
+var mousePressed = function() {
+    if (!eraser) points.push(false, [mouseX, mouseY]);
 };
 
 var mouseDragged = function() {
@@ -19,9 +35,12 @@ var mouseDragged = function() {
         fill(255);
         circle(mouseX, mouseY, eraserSize);
     } else {
-        stroke(strokeColour);
-        line(mouseX, mouseY, pmouseX, pmouseY);
+        points.push([mouseX, mouseY]);
     }
+};
+
+var mouseReleased = function() {
+    if (!eraser) points.push([mouseX, mouseY]);
 };
 
 var windowResized = function() {
