@@ -50,6 +50,7 @@ var mouseDragged = function() {
 
 var mouseReleased = function() {
     if (!eraser) points.push([mouseX, mouseY]);
+    // add a save to localStorage here
 };
 
 var windowResized = function() {
