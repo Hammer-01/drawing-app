@@ -28,7 +28,7 @@ var draw = function() {
     stroke(strokeColour); // move inside loop later when diff colours available
     for (let p = 0; p < points.length-1; p++) {
         //console.log(points); // debugging
-        if (points[p]) line(points[p][0], points[p][1], points[p+1][0], points[p+1][1]);
+        if (points[p] && points[p+1]) line(points[p][0], points[p][1], points[p+1][0], points[p+1][1]);
     }
 };
 
