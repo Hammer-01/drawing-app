@@ -20,7 +20,7 @@ var setup = function() {
     
     strokeColour = color(0);
     
-    erase = p => p ? p[0]+this/2 >= mouseX && p[0]-this/2 <= mouseX && p[1]+this/2 >= mouseY && p[1]-this/2 <= mouseY;
+    erase = p => p ? p[0]+this/2 >= mouseX && p[0]-this/2 <= mouseX && p[1]+this/2 >= mouseY && p[1]-this/2 <= mouseY : false;
 };
 
 var draw = function() {
