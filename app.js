@@ -39,7 +39,7 @@ var mouseDragged = function() {
     if (eraser) {
         console.log(points.findIndex(eraseFn));
         while (points.findIndex(eraseFn) !== -1) {
-            points.splice(points.findIndex(eraseFn));
+            points = points.filter(eraseFn);
             console.log('in erase while loop');
         }
     } else {
