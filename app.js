@@ -10,7 +10,7 @@ var ePoints = []; // temporary
 var strokeColour;
 var eraser = false;
 var eraserSize = 50;
-var erase;
+var eraseFn;
 
 var setup = function() {
     cnv = createCanvas(windowWidth, windowHeight);
@@ -20,7 +20,7 @@ var setup = function() {
     
     strokeColour = color(0);
     
-    erase = p => p ? p[0]+this/2 >= mouseX && p[0]-this/2 <= mouseX && p[1]+this/2 >= mouseY && p[1]-this/2 <= mouseY : false;
+    eraseFn = p => p ? p[0]+this/2 >= mouseX && p[0]-this/2 <= mouseX && p[1]+this/2 >= mouseY && p[1]-this/2 <= mouseY : false;
 };
 
 var draw = function() {
@@ -37,8 +37,8 @@ var mousePressed = function() {
 
 var mouseDragged = function() {
     if (eraser) {
-        while (points.findIndex(erase, eraserSize) !== -1) {
-            points.splice(points.findIndex(erase, eraserSize), 1);
+        while (points.findIndex(eraseFn, eraserSize) !== -1) {
+            points.splice(points.findIndex(eraseFn, eraserSize), 1);
             console.log('in erase while loop');
         }
     } else {
