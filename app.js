@@ -38,8 +38,9 @@ var mouseDragged = function() {
     // use dist() instead for circular eraser
     if (eraser) {
         while (erasablePoint() !== -1) {
-            points = points.splice(erasablePoint(), 1);
+            points.splice(erasablePoint(), 1, false);
         }
+        points.filter((p, i, a) => !i || p !== a[i - 1]); // clear duplicate falses
     }
     else points.push([mouseX, mouseY]);
 };
