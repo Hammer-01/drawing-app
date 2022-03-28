@@ -36,15 +36,8 @@ var mousePressed = function() {
 };
 
 var mouseDragged = function() {
-    if (eraser) {
-        console.log(points.findIndex(eraseFn));
-        while (points.findIndex(eraseFn) !== -1) {
-            points = points.filter(eraseFn);
-            console.log('in erase while loop');
-        }
-    } else {
-        points.push([mouseX, mouseY]);
-    }
+    if (eraser) points = points.filter(p => p ? p[0]+eraserSize/2 >= mouseX && p[0]-eraserSize/2 <= mouseX && p[1]+eraserSize/2 >= mouseY && p[1]-eraserSize/2 <= mouseY : false);
+    else points.push([mouseX, mouseY]);
 };
 
 var mouseReleased = function() {
