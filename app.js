@@ -34,24 +34,22 @@ var draw = function() {
 
 var mousePressed = function() {
     if (!eraser) points.push(false, [mouseX, mouseY]);
-    console.log(`false, [${mouseX}, ${mouseY}]`);
 };
 
 var mouseDragged = function() {
     if (eraser) {
+        console.log(points.findIndex(eraseFn, eraserSize));
         while (points.findIndex(eraseFn, eraserSize) !== -1) {
             points.splice(points.findIndex(eraseFn, eraserSize), 1);
             console.log('in erase while loop');
         }
     } else {
         points.push([mouseX, mouseY]);
-        console.log(`[${mouseX}, ${mouseY}]`);
     }
 };
 
 var mouseReleased = function() {
     if (!eraser) points.push([mouseX, mouseY]);
-    console.log(`[${mouseX}, ${mouseY}]`);
 };
 
 var windowResized = function() {
