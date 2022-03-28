@@ -32,7 +32,7 @@ var mousePressed = function() {
 };
 
 var mouseDragged = function() {
-    if (eraser) points = points.filter(p => p ? p[0]+eraserSize/2 >= mouseX && p[0]-eraserSize/2 <= mouseX && p[1]+eraserSize/2 >= mouseY && p[1]-eraserSize/2 <= mouseY : false);
+    if (eraser) points = points.filter(p => p ? !(p[0]+eraserSize/2 >= mouseX && p[0]-eraserSize/2 <= mouseX && p[1]+eraserSize/2 >= mouseY && p[1]-eraserSize/2 <= mouseY) : true);
     else points.push([mouseX, mouseY]);
 };
 
