@@ -10,6 +10,7 @@ var points = [];
 var strokeColour;
 var eraser = false;
 var eraserSize = 50;
+var erasablePoint;
 
 var setup = function() {
     cnv = createCanvas(windowWidth, windowHeight);
@@ -18,6 +19,7 @@ var setup = function() {
     }, true);
     
     strokeColour = color(0);
+    erasablePoint = () => points.findIndex(p => p ? p[0]+eraserSize/2 >= mouseX && p[0]-eraserSize/2 <= mouseX && p[1]+eraserSize/2 >= mouseY && p[1]-eraserSize/2 <= mouseY : false);
 };
 
 var draw = function() {
@@ -34,7 +36,11 @@ var mousePressed = function() {
 
 var mouseDragged = function() {
     // use dist() instead for circular eraser
-    if (eraser) points = points.filter(p => p ? !(p[0]+eraserSize/2 >= mouseX && p[0]-eraserSize/2 <= mouseX && p[1]+eraserSize/2 >= mouseY && p[1]-eraserSize/2 <= mouseY) : true);
+    if (eraser) {
+        while (erasablePoint() !== -1) {
+            points = points.splice(erasablePoint(), 1);
+        }
+    }
     else points.push([mouseX, mouseY]);
 };
 
