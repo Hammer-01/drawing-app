@@ -16,6 +16,11 @@ var setup = function() {
         eraser = event.button === 5;
     }, true);
     
+    if (localStorage.points) points = localStorage.getItem('points');
+    console.log(points);
+    if (typeof points === 'string') points = JSON.parse(points);
+    console.log(points);
+    
     strokeColour = color(0);
     erasablePoint = () => points.findIndex(p => p ? p[0]+eraserSize/2 >= mouseX && p[0]-eraserSize/2 <= mouseX && p[1]+eraserSize/2 >= mouseY && p[1]-eraserSize/2 <= mouseY : false);
 };
@@ -45,7 +50,7 @@ var mouseDragged = function() {
 
 var mouseReleased = function() {
     if (!eraser) points.push([mouseX, mouseY]);
-    // add a save to localStorage here
+    localStorage.setItem('points', points); // autosave
 };
 
 var windowResized = function() {
