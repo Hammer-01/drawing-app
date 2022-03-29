@@ -31,7 +31,6 @@ var mousePressed = function() {
 };
 
 var mouseDragged = function(newLine) {
-    console.log(newLine);
     if (newLine === true) console.log('reached mousePressed');
     else console.log('in mouseDragged');
     if (eraser) {
@@ -47,7 +46,7 @@ var mouseDragged = function(newLine) {
 };
 
 var mouseReleased = function() {
-    //if (!eraser) points.push([mouseX, mouseY]);
+    if (!eraser) points.push([mouseX, mouseY]);
     localStorage.setItem('points', JSON.stringify(points)); // autosave
 };
 
