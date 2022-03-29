@@ -16,7 +16,6 @@ var setup = function() {
     if (localStorage.points) points = JSON.parse(localStorage.getItem('points'));
     
     strokeColour = color(0);
-    //erasablePoint = () => points.findIndex(p => p ? p[0]+eraserSize/2 >= mouseX && p[0]-eraserSize/2 <= mouseX && p[1]+eraserSize/2 >= mouseY && p[1]-eraserSize/2 <= mouseY : false);
 };
 
 var draw = function() {
@@ -32,7 +31,9 @@ var mousePressed = function() {
 };
 
 var mouseDragged = function(newLine) {
-    // use dist() instead for circular eraser
+    console.log(newLine);
+    if (newLine === true) console.log('reached mousePressed');
+    else console.log('in mouseDragged');
     if (eraser) {
         while ((erasablePoint = points.findIndex(p => p ? dist(p[0], p[1], mouseX, mouseY) <= eraserSize/2 : false)) !== -1) {
             points.splice(erasablePoint, 1, false);
@@ -46,7 +47,7 @@ var mouseDragged = function(newLine) {
 };
 
 var mouseReleased = function() {
-    if (!eraser) points.push([mouseX, mouseY]);
+    //if (!eraser) points.push([mouseX, mouseY]);
     localStorage.setItem('points', JSON.stringify(points)); // autosave
 };
 
