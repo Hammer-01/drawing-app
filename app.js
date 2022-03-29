@@ -1,6 +1,3 @@
-// TODO: 
-//   Save to localStorage
-
 var cnv;
 
 var points = [];
@@ -16,10 +13,7 @@ var setup = function() {
         eraser = event.button === 5;
     }, true);
     
-    if (localStorage.points) points = localStorage.getItem('points');
-    console.log(points);
-    if (typeof points === 'string') points = JSON.parse(points);
-    console.log(points);
+    if (localStorage.points) points = JSON.parse(localStorage.getItem('points'));
     
     strokeColour = color(0);
     erasablePoint = () => points.findIndex(p => p ? p[0]+eraserSize/2 >= mouseX && p[0]-eraserSize/2 <= mouseX && p[1]+eraserSize/2 >= mouseY && p[1]-eraserSize/2 <= mouseY : false);
