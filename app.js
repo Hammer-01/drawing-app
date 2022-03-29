@@ -17,7 +17,7 @@ var setup = function() {
     
     strokeColour = color(0);
     //erasablePoint = () => points.findIndex(p => p ? p[0]+eraserSize/2 >= mouseX && p[0]-eraserSize/2 <= mouseX && p[1]+eraserSize/2 >= mouseY && p[1]-eraserSize/2 <= mouseY : false);
-    erasablePoint = () => points.findIndex(p => p ? dist(p[0], p[1], mouseX, mouseY) <= eraserSize : false);
+    erasablePoint = () => points.findIndex(p => p ? dist(p[0], p[1], mouseX, mouseY) <= eraserSize/2 : false);
 };
 
 var draw = function() {
