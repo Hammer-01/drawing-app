@@ -4,7 +4,7 @@ var points = [];
 
 var strokeColour;
 var eraser = false;
-var eraserSize = 500;
+var eraserSize = 250;
 var erasablePoint;
 
 var setup = function() {
