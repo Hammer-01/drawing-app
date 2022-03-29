@@ -30,9 +30,7 @@ var mousePressed = function() {
     mouseDragged(true);
 };
 
-var mouseDragged = function(newLine) {
-    if (newLine === true) console.log('reached mousePressed');
-    else console.log('in mouseDragged');
+var mouseDragged = function(pressed) {
     if (eraser) {
         while ((erasablePoint = points.findIndex(p => p ? dist(p[0], p[1], mouseX, mouseY) <= eraserSize/2 : false)) !== -1) {
             points.splice(erasablePoint, 1, false);
@@ -40,7 +38,7 @@ var mouseDragged = function(newLine) {
         points = points.filter((p, i, a) => !i || p !== a[i - 1]); // clear duplicate falses
     }
     else {
-        if (newLine === true) points.push(false);
+        if (pressed === true) points.push(false);
         points.push([mouseX, mouseY]);
     }
 };
