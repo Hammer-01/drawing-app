@@ -20,6 +20,10 @@ var setup = function() {
     strokeColour = color(0);
 };
 
+var save = function() {
+    localStorage.setItem('points', JSON.stringify(points)); // autosave
+};
+
 var draw = function() {
     background(255);
     stroke(strokeColour); // move inside loop later when diff colours available
@@ -29,6 +33,7 @@ var draw = function() {
 };
 
 var mousePressed = function() {
+    history = []; // fix
     mouseDragged(true);
 };
 
@@ -47,7 +52,7 @@ var mouseDragged = function(pressed) {
 
 var mouseReleased = function() {
     if (!eraser) points.push([mouseX, mouseY]);
-    localStorage.setItem('points', JSON.stringify(points)); // autosave
+    save(); // autosave
 };
 
 var keyPressed = function() {
@@ -57,9 +62,10 @@ var keyPressed = function() {
         // that won't work for erasing but whatever
         history.push(points.splice(points.lastIndexOf(false)));
     }
-    if (keys[17] && keys[89) { // Ctrl + Y
-        
+    if (keys[17] && keys[89]) { // Ctrl + Y
+        if (history.length) points.push(history.splice(history.lastIndexOf(false)));
     }
+    save();
 };
 
 var keyReleased = function() {
