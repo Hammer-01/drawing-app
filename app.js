@@ -1,6 +1,7 @@
 var cnv;
 
 var points = [];
+var keys = [];
 
 var strokeColour;
 var eraser = false;
@@ -46,6 +47,18 @@ var mouseDragged = function(pressed) {
 var mouseReleased = function() {
     if (!eraser) points.push([mouseX, mouseY]);
     localStorage.setItem('points', JSON.stringify(points)); // autosave
+};
+
+var keyPressed = function() {
+    keys[keyCode] = true;
+    if (keys[17] && keys[90]) { // Ctrl + Z
+        // pop points array until false value
+        // that won't work for erasing but whatever
+    }
+};
+
+var keyReleased = function() {
+    keys[keyCode] = false;
 };
 
 var windowResized = function() {
