@@ -54,7 +54,7 @@ var keyPressed = function() {
     if (keys[17] && keys[90]) { // Ctrl + Z
         // pop points array until false value
         // that won't work for erasing but whatever
-        if (points.indexOf !== -1) points.splice(points.lastIndexOf(false));
+        points.splice(points.lastIndexOf(false));
     }
 };
 
