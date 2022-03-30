@@ -7,6 +7,7 @@ var strokeColour;
 var eraser = false;
 var eraserSize = 50;
 var erasablePoint;
+var history = [];
 
 var setup = function() {
     cnv = createCanvas(windowWidth, windowHeight);
@@ -54,7 +55,10 @@ var keyPressed = function() {
     if (keys[17] && keys[90]) { // Ctrl + Z
         // pop points array until false value
         // that won't work for erasing but whatever
-        points.splice(points.lastIndexOf(false));
+        history.push(points.splice(points.lastIndexOf(false)));
+    }
+    if (keys[17] && keys[89) { // Ctrl + Y
+        
     }
 };
 
