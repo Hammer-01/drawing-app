@@ -1,3 +1,6 @@
+// TODO: 
+//   Add export option, to save as json (maybe in contextmenu), also import said json, if using contextmenu re-add save image (using save()) etc. 
+
 var cnv;
 
 var points = [];
@@ -20,7 +23,7 @@ var setup = function() {
     strokeColour = color(0);
 };
 
-var save = function() {
+var savePoints = function() {
     localStorage.setItem('points', JSON.stringify(points)); // autosave
 };
 
@@ -52,7 +55,7 @@ var mouseDragged = function(pressed) {
 
 var mouseReleased = function() {
     if (!eraser) points.push([mouseX, mouseY]);
-    save(); // autosave
+    savePoints(); // autosave
 };
 
 var keyPressed = function() {
@@ -65,7 +68,7 @@ var keyPressed = function() {
     if (keys[17] && keys[89]) { // Ctrl + Y
         if (history.length) points.push(history.splice(history.lastIndexOf(false)));
     }
-    save();
+    savePoints();
 };
 
 var keyReleased = function() {
