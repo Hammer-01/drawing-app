@@ -10,7 +10,7 @@ var strokeColour;
 var eraser = false;
 var eraserSize = 50;
 var erasablePoint;
-var history = [];
+var drawingHistory = [];
 
 var setup = function() {
     cnv = createCanvas(windowWidth, windowHeight);
@@ -36,7 +36,7 @@ var draw = function() {
 };
 
 var mousePressed = function() {
-    history = []; // fix
+    drawingHistory = []; // fix
     mouseDragged(true);
 };
 
@@ -66,7 +66,7 @@ var keyPressed = function() {
         history.push(points.splice(points.lastIndexOf(false)));
     }
     if (keys[17] && keys[89]) { // Ctrl + Y
-        if (history.length) points.push(history.splice(history.lastIndexOf(false)));
+        if (drawingHistory.length) points.push(drawingHistory.splice(drawingHistory.lastIndexOf(false)));
     }
     savePoints();
 };
