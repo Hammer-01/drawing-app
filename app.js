@@ -36,8 +36,6 @@ var draw = function() {
 };
 
 var mousePressed = function() {
-    console.log('Clearing history, contents were: ');
-    console.log(drawingHistory);
     drawingHistory = []; // fix
     mouseDragged(true);
 };
