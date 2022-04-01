@@ -65,10 +65,10 @@ var keyPressed = function() {
     if (keys[17] && keys[90]) { // Ctrl + Z
         // pop points array until false value
         // that won't work for erasing but whatever
-        drawingHistory.concat(points.splice(points.lastIndexOf(false)));
+        drawingHistory.push(...points.splice(points.lastIndexOf(false)));
     }
     if (keys[17] && keys[89]) { // Ctrl + Y
-        if (drawingHistory.length) points.concat(drawingHistory.splice(drawingHistory.lastIndexOf(false)));
+        if (drawingHistory.length) points.push(...drawingHistory.splice(drawingHistory.lastIndexOf(false)));
     }
     savePoints();
 };
