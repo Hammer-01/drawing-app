@@ -37,18 +37,16 @@ var draw = function() {
 
 var mousePressed = function() {
     drawingHistory = []; // fix
-    mouseDragged(true);
+    points.push(false);
 };
 
-var mouseDragged = function(pressed) {
+var mouseDragged = function() {
     if (eraser) {
         while ((erasablePoint = points.findIndex(p => p ? dist(p[0], p[1], mouseX, mouseY) <= eraserSize/2 : false)) !== -1) {
             points.splice(erasablePoint, 1, false);
         }
         points = points.filter((p, i, a) => !i || p !== a[i - 1]); // clear duplicate falses
-    }
-    else {
-        if (pressed === true) points.push(false);
+    } else {
         points.push([mouseX, mouseY]);
     }
 };
@@ -58,8 +56,9 @@ var mouseReleased = function() {
     savePoints(); // autosave
 };
 
-var keyPressed = function() {
+var keyPressed = function(event) {
     keys[keyCode] = true;
+    // TODO: Use event.ctrlKey instead. May not even need keys array
     if (keys[17] && keys[90]) { // Ctrl + Z
         // pop points array until false value
         // that won't work for erasing but whatever
