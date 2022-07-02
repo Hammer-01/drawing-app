@@ -57,7 +57,7 @@ var mouseReleased = function() {
 
 var keyPressed = function(event) {
     if (event.ctrlKey) {
-        switch (event.key) {
+        switch (event.code) {
         case 'KeyZ': // Ctrl + Z
             // pop points array until false value
             // that won't work for erasing but whatever
