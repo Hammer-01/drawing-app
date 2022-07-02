@@ -4,7 +4,6 @@
 var cnv;
 
 var points = [];
-var keys = [];
 
 var strokeColour;
 var eraser = false;
@@ -57,21 +56,19 @@ var mouseReleased = function() {
 };
 
 var keyPressed = function(event) {
-    keys[keyCode] = true;
-    // TODO: Use event.ctrlKey instead. May not even need keys array
-    if (keys[17] && keys[90]) { // Ctrl + Z
-        // pop points array until false value
-        // that won't work for erasing but whatever
-        drawingHistory.push(...points.splice(points.lastIndexOf(false)));
-    }
-    if (keys[17] && keys[89]) { // Ctrl + Y
-        if (drawingHistory.length) points.push(...drawingHistory.splice(drawingHistory.lastIndexOf(false)));
+    if (event.ctrlKey) {
+        switch (event.key) {
+        case 'KeyZ': // Ctrl + Z
+            // pop points array until false value
+            // that won't work for erasing but whatever
+            drawingHistory.push(...points.splice(points.lastIndexOf(false)));
+            break;
+        case 'KeyY': // Ctrl + Y
+            if (drawingHistory.length) points.push(...drawingHistory.splice(drawingHistory.lastIndexOf(false)));
+            break;
+        }
     }
     savePoints();
-};
-
-var keyReleased = function() {
-    keys[keyCode] = false;
 };
 
 var windowResized = function() {
